@@ -25,27 +25,27 @@ job4 -> customerid = 2 -> duration = 100 -> priority = sum(customerid = 2 durati
 #### PriorityStrategy interface
 It's an interface with single method as priority to be implemented as per user required strategy
 
-####RunnableAdapter
+#### RunnableAdapter
 It's a class to implements runnable interface and working as an adapter class to inject the thread execution method
 
-####RunnablePriorityAdapter
+#### RunnablePriorityAdapter
 It's an adapter class which extends FutureTask and the Comparable interface to set the job execution order as per their priority as a future execution.
 
-####JobUtils
+#### JobUtils
 It's an util class to store the static and final constants regarding thread pool properties and priority queue properties.
 
-####JobRunnerTests
+#### JobRunnerTests
 It's a test class to test different scenario for JobRunnerImpl class.
 
 * Any assumptions that affected your design
 * Any shortcomings of your implementation
-####Job Starvation
+#### Job Starvation
 The priority calculation logic may cause job starvation for some cases if any job for one unique customer id having the duration 100 or low, for example-
 job8 -> customerid = 101 -> duration = 10 -> priority = (sum of customerid = 101 duration) = 10
 job8 priority(10) less than all the available jobs in the queue.
 
 * An explanation of your definition of fairness execution
-####Fair Execution
+#### Fair Execution
 All the jobs will be inserted in the priority queue with a defined priority as per their customer id so that each customer id job can have similar priority and can be executed fairly.
 job1 -> customerid = 1 -> duration = 100 -> priority = sum(customerid = 1 duration) = 100
 job2 -> customerid = 1 -> duration = 100 -> priority = sum(customerid = 1 duration) = 200
